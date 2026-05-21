@@ -246,10 +246,22 @@ def handle_callback(call: CallbackQuery):
 
     bot.answer_callback_query(call.id)
 
-
+def send_reminders():
+    from datetime import datetime
+    now = datetime.now()
+    for uid in get_all_users():
+        rem = get_reminder(uid)
+        if rem and rem[0] == now.hour and rem[1] == now.minute:
+            try:
+                bot.send_message(uid, "🔔 Не забудь записать сегодняшний день! Нажми ➕ Записать день")
+            except:
+                pass
 
 
 if __name__ == "__main__":
     init_db()
+    scheduler = BackgroundScheduler()
+    scheduler.add_job(send_reminders, "cron", minute="*")
+    scheduler.start()
     print("Бот запущен...")
     bot.infinity_polling()

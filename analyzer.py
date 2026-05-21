@@ -12,7 +12,6 @@ def get_stats(user_id, days=7):
     best_day = max(rows, key=lambda r: r["mood"])
     worst_day = min(rows, key=lambda r: r["mood"])
 
-    # простая корреляция: сон > 7 часов → среднее настроение
     good_sleep = [r["mood"] for r in rows if r["sleep_hours"] >= 7]
     bad_sleep  = [r["mood"] for r in rows if r["sleep_hours"] < 7]
     avg_mood_good_sleep = round(sum(good_sleep) / len(good_sleep), 2) if good_sleep else "—"

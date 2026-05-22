@@ -47,6 +47,6 @@ def confirm_clear_keyboard():
     kb = InlineKeyboardMarkup()
     kb.row(
         InlineKeyboardButton("✅ Да, удалить", callback_data="clear_yes"),
-        InlineKeyboardButton("❌ Отмена",      callback_data="clear_no")
+        InlineKeyboardButton("❌ Нет, Отмена",      callback_data="clear_no")
     )
     return kb

@@ -79,7 +79,7 @@ def cmd_stats(msg: Message):
 def cmd_history(msg: Message):
     rows = get_all_entries(msg.from_user.id)
     if not rows:
-        bot.send_message(msg.chat.id, "Записей пока нет. Добавь первую! ➕")
+        bot.send_message(msg.chat.id, "Записей пока нет. Добавь! ➕")
         return
     text = "📜 *История записей:*\n\n"
     for r in rows[:15]:

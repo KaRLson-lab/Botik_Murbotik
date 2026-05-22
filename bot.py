@@ -18,7 +18,6 @@ def reset_state(uid):
     user_state[uid] = {"step": None, "data": {}}
 
 
-
 @bot.message_handler(commands=["start"])
 def cmd_start(msg: Message):
     reset_state(msg.from_user.id)
